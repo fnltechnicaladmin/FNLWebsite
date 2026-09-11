@@ -1,0 +1,453 @@
+/* =========================================================================
+   La Familia New Life — Shared Stylesheet (Phase 1)
+   Mobile-first. Breakpoints are PLAIN NUMBERS per architecture doc Section 16
+   (custom properties don't work inside @media conditions):
+     tablet:  min-width: 700px
+     desktop: min-width: 1100px
+   Content is capped at max-width: 1400px (not a real breakpoint — see .content-wrap).
+   ========================================================================= */
+ 
+/* -------------------- Color tokens (Section 2 / 6) -------------------- */
+/* NOTE: accent orange below is a PLACEHOLDER value, not the final spec.
+   The design lead's mockup uses an orange accent but hasn't confirmed an
+   exact value yet. Swap --color-orange (and its OKLCH form, once the site
+   migrates colors to oklch() in Phase 2 per Section 6) when she confirms. */
+:root {
+  --color-green: #508F02;   /* confirmed — pulled from the church logo */
+  --color-orange: #E2792F;  /* PLACEHOLDER — pending design lead's final spec */
+  --color-ink: #14181B;
+  --color-white: #FFFFFF;
+  --color-stone: #F1F2EC;
+ 
+  --font-heading: "Fraunces", Georgia, serif;   /* provisional — see note below */
+  --font-body: "Work Sans", -apple-system, Helvetica, Arial, sans-serif; /* provisional */
+ 
+  --nav-height: 64px;
+}
+/* NOTE: Fraunces + Work Sans are the provisionally-confirmed earlier-mockup
+   fonts. The design lead's latest mockup appears to use a different
+   headline typeface that hasn't been confirmed yet — treat as placeholder. */
+ 
+/* -------------------------- Reset / base -------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+}
+p { margin: 0 0 1em; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+ 
+/* Visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+ 
+/* -------------------------- Layout utility -------------------------- */
+/* Centers and caps content width on very large screens (Section 16).
+   Full-bleed elements (banners) must NOT use this class. */
+.content-wrap {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+@media (min-width: 700px) {
+  .content-wrap { padding: 0 32px; }
+}
+@media (min-width: 1100px) {
+  .content-wrap { padding: 0 48px; }
+}
+ 
+/* -------------------------- Buttons -------------------------- */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.btn--primary {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+.btn--secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-ink);
+}
+ 
+/* =========================================================================
+   BILINGUAL SYSTEM (Section 5) — simplified to a two-state toggle
+   Single data-lang-mode attribute on <html>: "es" | "en"
+   (ES+EN side-by-side mode was dropped — see project note.)
+   ========================================================================= */
+ 
+/* Default state before JS runs / as a safe fallback: show Spanish */
+.lang-col--es, .lang-col--en { display: inline; }
+ 
+html[data-lang-mode="es"] .lang-col--en { display: none !important; }
+html[data-lang-mode="en"] .lang-col--es { display: none !important; }
+ 
+/* Language toggle control — two-state segmented button group.
+   Repeated identically in the nav bar and the footer (Section 3.1). */
+.lang-toggle {
+  display: inline-flex;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.lang-toggle__btn {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.lang-toggle__btn + .lang-toggle__btn { border-left: 1.5px solid var(--color-ink); }
+.lang-toggle__btn[aria-pressed="true"] {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+.site-footer .lang-toggle__btn { color: var(--color-stone); }
+.site-footer .lang-toggle__btn[aria-pressed="true"] {
+  background: var(--color-stone);
+  color: var(--color-ink);
+}
+.site-footer .lang-toggle { border-color: var(--color-stone); }
+.site-footer .lang-toggle__btn + .lang-toggle__btn { border-left-color: var(--color-stone); }
+ 
+/* =========================================================================
+   TOP NAV (Section 3.1)
+   logo (left) — nav links (center) — lang toggle + primary CTA (right)
+   ========================================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-stone);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--nav-height);
+  gap: 16px;
+}
+ 
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.05;
+  color: var(--color-ink);
+  flex-shrink: 0;
+}
+.logo span { display: block; }
+.logo .logo__sub { font-size: 0.6em; letter-spacing: 0.08em; color: var(--color-green); }
+ 
+/* Mobile: link list collapses behind the hamburger toggle */
+.site-nav {
+  position: fixed;
+  inset: var(--nav-height) 0 0 0;
+  background: var(--color-white);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  overflow-y: auto;
+  padding: 24px 20px;
+}
+.site-nav[data-open="true"] { transform: translateX(0); }
+.site-nav__links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.site-nav__links a {
+  display: block;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--color-stone);
+  font-weight: 500;
+}
+.site-nav__links .btn { margin-top: 12px; }
+ 
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+ 
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+.menu-toggle svg { width: 24px; height: 24px; }
+.menu-toggle .icon-close { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+ 
+/* Mobile: logo + CTA + lang toggle stay visible in the header; only the
+   link list moves into the drawer (Section 3.1 update — toggle lives only
+   in the header now, not duplicated in the drawer). */
+.site-header__actions .btn--primary { display: inline-block; }
+.site-header__actions .lang-toggle { display: inline-flex; }
+/* Tighter sizing at the narrowest widths so logo + toggle + CTA + hamburger
+   all fit on one line without crowding */
+.site-header__actions .lang-toggle__btn { padding: 5px 8px; font-size: 0.75rem; }
+.site-header__actions { gap: 8px; }
+ 
+@media (min-width: 700px) {
+  .site-nav {
+    position: static;
+    inset: auto;
+    transform: none;
+    padding: 0;
+    overflow: visible;
+  }
+  .site-nav__links {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+  .site-nav__links a {
+    padding: 8px 10px;
+    border-bottom: none;
+    font-size: 0.9rem;
+  }
+  .site-nav__links .btn { display: none; } /* CTA lives in header actions on desktop */
+  .menu-toggle { display: none; }
+  .site-header__actions .lang-toggle { display: inline-flex; }
+  .site-header__actions .lang-toggle__btn { padding: 6px 10px; font-size: 0.8rem; }
+  .site-header__actions { gap: 12px; }
+}
+ 
+/* =========================================================================
+   FOOTER (Section 12/14)
+   grid: 3 link columns + brand + social. Language toggle repeated here,
+   controlling the same site-wide state as the nav bar's toggle.
+   ========================================================================= */
+.site-footer {
+  background: var(--color-ink);
+  color: var(--color-white);
+  padding: 48px 0 24px;
+}
+.site-footer a { opacity: 0.85; }
+.site-footer a:hover { opacity: 1; }
+ 
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+.site-footer__brand .logo { color: var(--color-white); }
+.site-footer__brand .logo .logo__sub { color: var(--color-green); }
+.site-footer__brand p { opacity: 0.75; font-size: 0.9rem; max-width: 32ch; }
+ 
+.site-footer__col h4 {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-stone);
+  margin-bottom: 12px;
+}
+.site-footer__col ul { display: flex; flex-direction: column; gap: 8px; }
+.site-footer__col a { font-size: 0.9rem; }
+ 
+.site-footer__social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.site-footer__social a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+}
+.site-footer__social svg { width: 18px; height: 18px; stroke: currentColor; }
+ 
+.site-footer__bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+ 
+@media (min-width: 700px) {
+  .site-footer__grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .site-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+ 
+/* =========================================================================
+   MEDIA BANNER (Section 4.2 / Section 14)
+   Full-bleed background with overlaid text. One component type covers the
+   hero, gospel banner, community banner, give banner, and promo tiles.
+ 
+   BACKGROUND SYSTEM (updated — see project note to update Section 4.2):
+   `background` now supports three shapes, chosen with ONE modifier class
+   on the .media-banner element + a matching data-* attribute. A shared
+   script (see the bottom of the shared shell script) reads the class and
+   builds the right layer at runtime — nothing to comment in/out by hand:
+ 
+     .media-banner--bg-image      data-bg-image="/media/x/photo.jpg"
+     .media-banner--bg-slideshow  data-bg-slides="url1,url2,url3,..."
+     .media-banner--bg-video      data-bg-video="/media/x/clip.mp4"
+                                   data-bg-poster="/media/x/poster.jpg" (optional)
+ 
+   Switching modes on any banner = change the modifier class + swap the
+   data-* attribute. No markup to add, remove, or comment.
+   ========================================================================= */
+.media-banner {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+.media-banner__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.media-banner__bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+.media-banner__bg-slide--active { opacity: 1; }
+.media-banner__bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.media-banner__bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media-banner__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(20,24,27,0.55) 0%, rgba(20,24,27,0.75) 60%, rgba(20,24,27,0.92) 100%);
+}
+.media-banner__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+ 
+.media-banner--hero .media-banner__inner {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+ 
+/* Respect reduced motion: no crossfade transition, first slide just stays put */
+@media (prefers-reduced-motion: reduce) {
+  .media-banner__bg-slide { transition: none; }
+}
+ 
+.media-banner__eyebrow {
+  color: var(--color-green);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.media-banner__title {
+  font-size: 2.1rem;
+  max-width: 16ch;
+  margin-bottom: 16px;
+}
+.media-banner__body {
+  max-width: 46ch;
+  opacity: 0.85;
+  margin-bottom: 24px;
+}
+.media-banner__quote {
+  margin: 0 0 28px;
+  padding-left: 16px;
+  border-left: 3px solid var(--color-orange);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-style: italic;
+  max-width: 30ch;
+}
+ 
+.media-banner__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.btn--on-dark { border-color: var(--color-white); color: var(--color-white); }
+ 
+/* Meta row — nested flex, wraps (Section 14, row 1) */
+.media-banner__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.media-banner__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+.media-banner__meta-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+.media-banner__meta-item--link {
+  color: var(--color-green);
+  font-weight: 600;
+}
+ 
+@media (min-width: 700px) {
+  .media-banner__title { font-size: 2.8rem; }
+  .media-banner--hero .media-banner__inner {
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+}
+@media (min-width: 1100px) {
+  .media-banner__title { font-size: 3.4rem; }
+}
+ 
+
+
+
