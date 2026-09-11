@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!--
+  ⚠️ FLASH-PREVENTION SCRIPT — must stay the very first thing in <head>,
+  before the stylesheet link, per architecture doc Section 5.4. It reads the
+  saved language mode from localStorage and sets it on <html> before the
+  browser paints, so there's no one-frame flash of the wrong language.
+  This script is IDENTICAL on every page — copy it verbatim (Section 5.5).
+-->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('fnl-lang-mode');
+      document.documentElement.setAttribute('data-lang-mode', saved || 'es');
+    } catch (e) {
+      document.documentElement.setAttribute('data-lang-mode', 'es');
+    }
+  })();
+</script>
+ 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Familia New Life — Inicio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- PLACEHOLDER fonts — Fraunces + Work Sans are provisional, see Section 2 -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+<!-- =========================== TOP NAV =========================== -->
+<header class="site-header">
+  <div class="site-header__inner content-wrap">
+ 
+    <a href="/" class="logo" aria-label="La Familia New Life, home">
+      <span>LA FAMILIA</span>
+      <span class="logo__sub">NEW LIFE</span>
+    </a>
+ 
+    <nav class="site-nav" id="site-nav" data-open="false">
+      <ul class="site-nav__links">
+        <li><a href="/"><span class="lang-col--es">Inicio</span><span class="lang-col--en">Home</span></a></li>
+        <li><a href="/nosotros"><span class="lang-col--es">Nosotros</span><span class="lang-col--en">About</span></a></li>
+        <li><a href="/que-creemos"><span class="lang-col--es">Qué Creemos</span><span class="lang-col--en">What We Believe</span></a></li>
+        <li><a href="/ministerios"><span class="lang-col--es">Ministerios</span><span class="lang-col--en">Ministries</span></a></li>
+        <li><a href="/mensajes"><span class="lang-col--es">Mensajes</span><span class="lang-col--en">Messages</span></a></li>
+        <li><a href="/eventos"><span class="lang-col--es">Eventos</span><span class="lang-col--en">Events</span></a></li>
+        <li><a href="/conectate"><span class="lang-col--es">Conéctate</span><span class="lang-col--en">Connect</span></a></li>
+        <li><a href="/dar"><span class="lang-col--es">Dar</span><span class="lang-col--en">Give</span></a></li>
+        <!-- CTA repeated inside the mobile drawer since it's hidden on desktop nav-list via CSS -->
+        <li>
+          <a href="/visitanos" class="btn btn--primary">
+            <span class="lang-col--es">Visítanos</span><span class="lang-col--en">Plan a Visit</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+ 
+    <div class="site-header__actions">
+      <div class="lang-toggle" role="group" aria-label="Language / Idioma" data-lang-toggle>
+        <button type="button" class="lang-toggle__btn" data-lang-set="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="/visitanos" class="btn btn--primary">
+        <span class="lang-col--es">Visítanos</span><span class="lang-col--en">Plan a Visit</span>
+      </a>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu / Menú">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+ 
+  </div>
+</header>
+ 
+<!-- =========================================================================
+     HOMEPAGE — Section 14 build order. Section 1 of 12: HERO
+     media-banner component, full field set (eyebrow, title, body, quote,
+     buttons, meta). Meta row is a nested flex, wrap: true.
+     ========================================================================= -->
+<main>
+ 
+  <section class="media-banner media-banner--hero media-banner--bg-video"
+         data-bg-video="media/hero/hero-video.mp4"
+         data-bg-poster="media/hero/hero-poster.jpeg">
+    <!-- To switch this banner 
+        to a single photo: 
+        <section class="media-banner media-banner--hero media-banner--bg-image"
+         data-bg-image="media/hero/hero-1.jpeg">
+
+         To switch to slideshow:
+         <section class="media-banner media-banner--hero media-banner--bg-slideshow"
+         data-bg-slides="media/hero/hero-1.jpeg,media/hero/hero-2.jpeg,media/hero/hero-3.jpeg,media/hero/hero-4.jpeg,media/hero/hero-5.jpeg">
+
+         To switch to video :
+         <section class="media-banner media-banner--hero media-banner--bg-video"
+         data-bg-video="media/hero/hero-video.mp4"
+         data-bg-poster="media/hero/hero-poster.jpeg">
+    -->
+    <div class="media-banner__inner content-wrap">
+ 
+      <p class="media-banner__eyebrow">
+        <span class="lang-col--es">Bienvenido a</span><span class="lang-col--en">Welcome to</span>
+      </p>
+ 
+      <h1 class="media-banner__title">Familia New Life</h1>
+ 
+      <p class="media-banner__body">
+        <span class="lang-col--es">PLACEHOLDER — un párrafo breve de bienvenida que invita al visitante a conocer más sobre la iglesia va aquí.</span>
+        <span class="lang-col--en">PLACEHOLDER — a short welcoming paragraph inviting the visitor to learn more about the church goes here.</span>
+      </p>
+ 
+      <blockquote class="media-banner__quote">
+        <span class="lang-col--es">Más que una iglesia.<br>Somos familia.</span>
+        <span class="lang-col--en">More than a church.<br>We are family.</span>
+      </blockquote>
+ 
+      <div class="media-banner__buttons">
+        <a href="/visitanos" class="btn btn--primary">
+          <span class="lang-col--es">Visítanos</span><span class="lang-col--en">Visit Us</span>
+        </a>
+        <a href="/nosotros" class="btn btn--secondary btn--on-dark">
+          <span class="lang-col--es">Conoce FNL</span><span class="lang-col--en">Learn More</span>
+        </a>
+      </div>
+ 
+      <div class="media-banner__meta">
+        <span class="media-banner__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          <span class="lang-col--es">Domingos 9:00 AM</span><span class="lang-col--en">Sundays 9:00 AM</span>
+        </span>
+        <span class="media-banner__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="lang-col--es">La Molina, Lima Perú</span><span class="lang-col--en">La Molina, Lima Peru</span>
+        </span>
+        <a href="https://www.google.com/maps/place/La+Molina+Christian+Schools/@-12.0865607,-76.9053944,17z/data=!3m1!4b1!4m6!3m5!1s0x9105c0da13cbefa1:0x8f2c78e5ae9227d!8m2!3d-12.0865607!4d-76.9053944!16s%2Fg%2F11c3thztg_?entry=ttu&g_ep=EgoyMDI2MDkwOC4wIKXMDSoASAFQAw%3D%3D" class="media-banner__meta-item media-banner__meta-item--link" target="_blank" rel="noopener">
+          <span class="lang-col--es">Cómo llegar</span><span class="lang-col--en">Get Directions</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- Section 2 of 12, "Somos familia" welcome, goes here next -->
+ 
+</main>
+ 
+<!-- =========================== FOOTER =========================== -->
+<footer class="site-footer">
+  <div class="content-wrap">
+    <div class="site-footer__grid">
+ 
+      <div class="site-footer__brand">
+        <a href="/" class="logo">
+          <span>LA FAMILIA</span>
+          <span class="logo__sub">NEW LIFE</span>
+        </a>
+        <p>
+          <span class="lang-col--es">PLACEHOLDER — dirección y descripción breve de la iglesia van aquí.</span>
+          
+          <span class="lang-col--en">PLACEHOLDER — church address and short description go here.</span>
+        </p>
+        <div class="site-footer__social">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10 9 16 12 10 15 10 9"/></svg>
+          </a>
+        </div>
+      </div>
+ 
+      <div class="site-footer__col">
+        <h4><span class="lang-col--es">Explorar</span><span class="lang-col--en">Explore</span></h4>
+        <ul>
+          <li><a href="/nosotros"><span class="lang-col--es">Nosotros</span><span class="lang-col--en">About</span></a></li>
+          <li><a href="/que-creemos"><span class="lang-col--es">Qué Creemos</span><span class="lang-col--en">What We Believe</span></a></li>
+          <li><a href="/ministerios"><span class="lang-col--es">Ministerios</span><span class="lang-col--en">Ministries</span></a></li>
+          <li><a href="/mensajes"><span class="lang-col--es">Mensajes</span><span class="lang-col--en">Messages</span></a></li>
+        </ul>
+      </div>
+ 
+      <div class="site-footer__col">
+        <h4><span class="lang-col--es">Participa</span><span class="lang-col--en">Get Involved</span></h4>
+        <ul>
+          <li><a href="/eventos"><span class="lang-col--es">Eventos</span><span class="lang-col--en">Events</span></a></li>
+          <li><a href="/conectate"><span class="lang-col--es">Conéctate</span><span class="lang-col--en">Connect</span></a></li>
+          <li><a href="/dar"><span class="lang-col--es">Dar</span><span class="lang-col--en">Give</span></a></li>
+          <li><a href="/conectate#oracion"><span class="lang-col--es">Peticiones de Oración</span><span class="lang-col--en">Prayer Requests</span></a></li>
+        </ul>
+      </div>
+ 
+      <div class="site-footer__col">
+        <h4><span class="lang-col--es">Contacto</span><span class="lang-col--en">Contact</span></h4>
+        <ul>
+          <li>
+            <span class="lang-col--es">PLACEHOLDER — horario de servicios</span>
+            
+            <span class="lang-col--en">PLACEHOLDER — service times</span>
+          </li>
+          <li><a href="/contacto"><span class="lang-col--es">Escríbenos</span><span class="lang-col--en">Contact Us</span></a></li>
+          <li><a href="/staff"><span class="lang-col--es">Nuestro Equipo</span><span class="lang-col--en">Staff</span></a></li>
+        </ul>
+      </div>
+ 
+    </div>
+ 
+    <div class="site-footer__bottom">
+      <div class="lang-toggle" role="group" aria-label="Language / Idioma" data-lang-toggle>
+        <button type="button" class="lang-toggle__btn" data-lang-set="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+      </div>
+      <span>
+        <span class="lang-col--es">© 2026 La Familia New Life. Todos los derechos reservados.</span>
+        
+        <span class="lang-col--en">© 2026 La Familia New Life. All rights reserved.</span>
+      </span>
+    </div>
+  </div>
+</footer>
+ 
+<!--
+  MOBILE MENU + LANGUAGE TOGGLE + MEDIA BANNER BACKGROUNDS — identical on
+  every page (Section 5.5). Copy this verbatim along with the
+  flash-prevention script above. The media-banner piece builds whichever
+  background layer (image / slideshow / video) a given .media-banner asks
+  for via its modifier class + data-* attribute — see Section 4.2.
+-->
+<script>
+  (function () {
+    // --- Mobile menu toggle ---
+    var menuBtn = document.getElementById('menu-toggle');
+    var nav = document.getElementById('site-nav');
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', function () {
+        var isOpen = nav.getAttribute('data-open') === 'true';
+        nav.setAttribute('data-open', String(!isOpen));
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+ 
+    // --- Language toggle (two-state, synced across nav + footer instances) ---
+    var STORAGE_KEY = 'fnl-lang-mode';
+ 
+    function setLangMode(mode) {
+      document.documentElement.setAttribute('data-lang-mode', mode);
+      try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
+      document.querySelectorAll('[data-lang-toggle] .lang-toggle__btn').forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang-set') === mode));
+      });
+    }
+ 
+    document.querySelectorAll('[data-lang-toggle] .lang-toggle__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setLangMode(btn.getAttribute('data-lang-set'));
+      });
+    });
+ 
+    // Sync toggle button states to whatever the flash-prevention script already set
+    var current = document.documentElement.getAttribute('data-lang-mode') || 'es';
+    setLangMode(current);
+ 
+    // --- Media banner backgrounds (image / slideshow / video) ---
+    // Mode is read from a modifier class; source(s) come from a matching
+    // data-* attribute. Switching a banner's mode = change the class + the
+    // data-* value. Nothing here needs editing when a page's banners change.
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ 
+    document.querySelectorAll('.media-banner').forEach(function (banner) {
+      var bg = document.createElement('div');
+      bg.className = 'media-banner__bg';
+      bg.setAttribute('aria-hidden', 'true');
+ 
+      if (banner.classList.contains('media-banner--bg-slideshow')) {
+        var urls = (banner.getAttribute('data-bg-slides') || '')
+          .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+ 
+        urls.forEach(function (url, i) {
+          var slide = document.createElement('div');
+          slide.className = 'media-banner__bg-slide' + (i === 0 ? ' media-banner__bg-slide--active' : '');
+          slide.style.backgroundImage = "url('" + url + "')";
+          bg.appendChild(slide);
+        });
+ 
+        if (urls.length > 1 && !reduceMotion) {
+          var slides = Array.prototype.slice.call(bg.children);
+          var idx = 0;
+          setInterval(function () {
+            slides[idx].classList.remove('media-banner__bg-slide--active');
+            idx = (idx + 1) % slides.length;
+            slides[idx].classList.add('media-banner__bg-slide--active');
+          }, 6000);
+        }
+ 
+      } else if (banner.classList.contains('media-banner--bg-video')) {
+        var videoUrl = banner.getAttribute('data-bg-video');
+        var poster = banner.getAttribute('data-bg-poster');
+        if (videoUrl) {
+          var video = document.createElement('video');
+          video.className = 'media-banner__bg-video';
+          video.muted = true;
+          video.loop = true;
+          video.setAttribute('playsinline', '');
+          if (poster) video.poster = poster;
+          var source = document.createElement('source');
+          source.src = videoUrl;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          bg.appendChild(video);
+          if (!reduceMotion) {
+            video.autoplay = true;
+            video.play().catch(function () {}); // autoplay can be blocked by the browser; fail silently
+          }
+          // If reduced motion is preferred, the video stays paused on its poster/first frame.
+        }
+ 
+      } else if (banner.classList.contains('media-banner--bg-image')) {
+        var imgUrl = banner.getAttribute('data-bg-image');
+        if (imgUrl) {
+          var layer = document.createElement('div');
+          layer.className = 'media-banner__bg-image';
+          layer.style.backgroundImage = "url('" + imgUrl + "')";
+          bg.appendChild(layer);
+        }
+      }
+ 
+      if (bg.children.length) {
+        banner.insertBefore(bg, banner.firstChild);
+        var overlay = document.createElement('div');
+        overlay.className = 'media-banner__overlay';
+        overlay.setAttribute('aria-hidden', 'true');
+        banner.insertBefore(overlay, bg.nextSibling);
+      }
+    });
+  })();
+</script>
+ 
+</body>
+</html>
+ 
