@@ -18,7 +18,7 @@
     }
   })();
 </script>
- 
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Familia New Life — Inicio</title>
@@ -29,16 +29,16 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- 
+
 <!-- =========================== TOP NAV =========================== -->
 <header class="site-header">
   <div class="site-header__inner content-wrap">
- 
+
     <a href="/" class="logo" aria-label="La Familia New Life, home">
       <span>LA FAMILIA</span>
       <span class="logo__sub">NEW LIFE</span>
     </a>
- 
+
     <nav class="site-nav" id="site-nav" data-open="false">
       <ul class="site-nav__links">
         <li><a href="/"><span class="lang-col--es">Inicio</span><span class="lang-col--en">Home</span></a></li>
@@ -57,7 +57,7 @@
         </li>
       </ul>
     </nav>
- 
+
     <div class="site-header__actions">
       <div class="lang-toggle" role="group" aria-label="Language / Idioma" data-lang-toggle>
         <button type="button" class="lang-toggle__btn" data-lang-set="es" aria-pressed="true">ES</button>
@@ -75,52 +75,55 @@
         </svg>
       </button>
     </div>
- 
+
   </div>
 </header>
- 
+
 <!-- =========================================================================
      HOMEPAGE — Section 14 build order. Section 1 of 12: HERO
      media-banner component, full field set (eyebrow, title, body, quote,
      buttons, meta). Meta row is a nested flex, wrap: true.
      ========================================================================= -->
 <main>
- 
-  <section class="media-banner media-banner--hero media-banner--bg-video"
-         data-bg-video="media/hero/hero-video.mp4"
-         data-bg-poster="media/hero/hero-poster.jpeg">
-    <!-- To switch this banner 
-        to a single photo: 
-        <section class="media-banner media-banner--hero media-banner--bg-image"
-         data-bg-image="media/hero/hero-1.jpeg">
 
-         To switch to slideshow:
-         <section class="media-banner media-banner--hero media-banner--bg-slideshow"
-         data-bg-slides="media/hero/hero-1.jpeg,media/hero/hero-2.jpeg,media/hero/hero-3.jpeg,media/hero/hero-4.jpeg,media/hero/hero-5.jpeg">
+  <section class="media-banner media-banner--hero bg-video"
+           data-bg-video="media/hero/hero-video.mp4"
+           data-bg-poster="media/hero/hero-poster.jpeg">
+    <!-- BACKGROUND MODE — currently VIDEO. To switch, replace the class +
+         data-* attributes on the <section> above with one of these three
+         (nothing else needs to change, no markup to add/remove):
 
-         To switch to video :
-         <section class="media-banner media-banner--hero media-banner--bg-video"
-         data-bg-video="media/hero/hero-video.mp4"
-         data-bg-poster="media/hero/hero-poster.jpeg">
+         Single photo:
+         <section class="media-banner media-banner--hero bg-image"
+                  data-bg-image="media/hero/hero-1.jpeg">
+
+         Slideshow (multiple photos):
+         <section class="media-banner media-banner--hero bg-slideshow"
+                  data-bg-slides="media/hero/hero-1.jpeg,media/hero/hero-2.jpeg,media/hero/hero-3.jpeg,media/hero/hero-4.jpeg,media/hero/hero-5.jpeg">
+
+         Video:
+         <section class="media-banner media-banner--hero bg-video"
+                  data-bg-video="media/hero/hero-video.mp4"
+                  data-bg-poster="media/hero/hero-poster.jpeg">
     -->
     <div class="media-banner__inner content-wrap">
- 
+
       <p class="media-banner__eyebrow">
         <span class="lang-col--es">Bienvenido a</span><span class="lang-col--en">Welcome to</span>
       </p>
- 
+
       <h1 class="media-banner__title">Familia New Life</h1>
- 
+
       <p class="media-banner__body">
         <span class="lang-col--es">PLACEHOLDER — un párrafo breve de bienvenida que invita al visitante a conocer más sobre la iglesia va aquí.</span>
         <span class="lang-col--en">PLACEHOLDER — a short welcoming paragraph inviting the visitor to learn more about the church goes here.</span>
       </p>
- 
+
       <blockquote class="media-banner__quote">
         <span class="lang-col--es">Más que una iglesia.<br>Somos familia.</span>
         <span class="lang-col--en">More than a church.<br>We are family.</span>
       </blockquote>
- 
+
       <div class="media-banner__buttons">
         <a href="/visitanos" class="btn btn--primary">
           <span class="lang-col--es">Visítanos</span><span class="lang-col--en">Visit Us</span>
@@ -129,7 +132,7 @@
           <span class="lang-col--es">Conoce FNL</span><span class="lang-col--en">Learn More</span>
         </a>
       </div>
- 
+
       <div class="media-banner__meta">
         <span class="media-banner__meta-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
@@ -139,24 +142,501 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span class="lang-col--es">La Molina, Lima Perú</span><span class="lang-col--en">La Molina, Lima Peru</span>
         </span>
-        <a href="https://www.google.com/maps/place/La+Molina+Christian+Schools/@-12.0865607,-76.9053944,17z/data=!3m1!4b1!4m6!3m5!1s0x9105c0da13cbefa1:0x8f2c78e5ae9227d!8m2!3d-12.0865607!4d-76.9053944!16s%2Fg%2F11c3thztg_?entry=ttu&g_ep=EgoyMDI2MDkwOC4wIKXMDSoASAFQAw%3D%3D" class="media-banner__meta-item media-banner__meta-item--link" target="_blank" rel="noopener">
+        <a href="#" data-directions-link class="media-banner__meta-item media-banner__meta-item--link" target="_blank" rel="noopener">
           <span class="lang-col--es">Cómo llegar</span><span class="lang-col--en">Get Directions</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
- 
+
     </div>
   </section>
- 
-  <!-- Section 2 of 12, "Somos familia" welcome, goes here next -->
- 
+
+  <!-- =====================================================================
+       Section 2 of 12: "SOMOS FAMILIA" (welcome)
+       text + image, grid columns: 2 (Section 14)
+       ===================================================================== -->
+  <section class="content-wrap two-col">
+    <div class="two-col__text">
+      <h2>
+        <span class="lang-col--es">Somos familia</span>
+        <span class="lang-col--en">We are family</span>
+      </h2>
+      <p>
+        <span class="lang-col--es">PLACEHOLDER — un párrafo de bienvenida más extenso que explica quiénes somos como iglesia y qué se puede esperar al visitarnos por primera vez.</span>
+        <span class="lang-col--en">PLACEHOLDER — a longer welcome paragraph explaining who we are as a church and what to expect when visiting for the first time.</span>
+      </p>
+    </div>
+    <div class="two-col__media media-box bg-image"
+         data-bg-image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop"
+         role="img"
+         aria-label="Un grupo de amigos con los brazos entrelazados, sonriendo juntos">
+      <!-- PLACEHOLDER photo — Helena Lopes, free to use under the Unsplash
+           License. Same background system as the hero: to switch this to a
+           slideshow or video, change the class + data-* attribute above:
+
+           Slideshow: class="two-col__media media-box bg-slideshow"
+                      data-bg-slides="media/welcome/photo-1.jpeg,media/welcome/photo-2.jpeg,..."
+
+           Video:     class="two-col__media media-box bg-video"
+                      data-bg-video="media/welcome/clip.mp4"
+                      data-bg-poster="media/welcome/poster.jpeg" (optional)
+
+           NOTE: role="img" + aria-label above stand in for alt text, since
+           background-image layers have no native alt attribute. Update the
+           aria-label to match whatever image/video actually ends up here. -->
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Section 3 of 12: MISSION STRIP
+       image + text, grid columns: 2, variant: reverse (Section 14) —
+       image sits on the left on desktop; mobile still reads text first.
+       ===================================================================== -->
+  <section class="section--stone">
+    <div class="content-wrap two-col two-col--reverse">
+      <div class="two-col__text">
+        <h2>
+          <span class="lang-col--es">Nuestra misión</span>
+          <span class="lang-col--en">Our mission</span>
+        </h2>
+        <p>
+          <span class="lang-col--es">PLACEHOLDER — una declaración de misión breve y memorable que resuma el propósito de la iglesia va aquí.</span>
+          <span class="lang-col--en">PLACEHOLDER — a short, memorable mission statement summarizing the church's purpose goes here.</span>
+        </p>
+      </div>
+      <div class="two-col__media media-box bg-image"
+           data-bg-image="https://images.unsplash.com/photo-1741367637710-ed371718bd1c?q=80&w=1200&auto=format&fit=crop"
+           role="img"
+           aria-label="Un libro abierto iluminado por rayos de luz">
+        <!-- PLACEHOLDER photo — Aaron Burden, free to use under the Unsplash License -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Section 4 of 12: "LO QUE NOS DEFINE" (values)
+       5x value-card, flex, wrap: true, justify: center (Section 14)
+       Content below is REAL — taken from the design lead's mockup — not
+       placeholder, except the English translations (see note below).
+       ===================================================================== -->
+  <section class="content-wrap">
+    <span class="section-eyebrow">
+      <span class="lang-col--es">Nuestra cultura</span>
+      <span class="lang-col--en">Our culture</span>
+    </span>
+    <h2 class="values-heading">
+      <span class="lang-col--es">Lo que nos define</span>
+      <span class="lang-col--en">What defines us</span>
+    </h2>
+
+    <!-- NOTE: the mockup is Spanish-only. English text below is my
+         translation, not confirmed copy — please have someone review it
+         before launch. Also: each card here has TWO body paragraphs
+         (a short tagline + a supporting line), which is one more text
+         field than Section 4.2 currently documents for value-card
+         (title + single body). Worth updating that section to match. -->
+
+    <div class="values-row">
+
+      <div class="value-card">
+        <div class="value-card__icon" style="background-color: var(--color-green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8z"/></svg>
+        </div>
+        <h3 class="value-card__title">
+          <span class="lang-col--es">Jesús Primero</span><span class="lang-col--en">Jesus First</span>
+        </h3>
+        <p class="value-card__body">
+          <span class="lang-col--es">Priorizamos a Jesús por sobre todo.</span>
+          <span class="lang-col--en">We prioritize Jesus above all else.</span>
+        </p>
+        <p class="value-card__desc">
+          <span class="lang-col--es">Todo lo que hacemos nace del deseo de honrar a Jesús.</span>
+          <span class="lang-col--en">Everything we do is born from a desire to honor Jesus.</span>
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-card__icon" style="background-color: var(--color-orange);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5c-.8 0-1.5-.7-1.5-1.5v-13z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5c.8 0 1.5-.7 1.5-1.5v-13z"/></svg>
+        </div>
+        <h3 class="value-card__title">
+          <span class="lang-col--es">Celebramos el Evangelio</span><span class="lang-col--en">We Celebrate the Gospel</span>
+        </h3>
+        <p class="value-card__body">
+          <span class="lang-col--es">Creemos que el Evangelio transforma vidas, comunidades y naciones.</span>
+          <span class="lang-col--en">We believe the Gospel transforms lives, communities, and nations.</span>
+        </p>
+        <p class="value-card__desc">
+          <span class="lang-col--es">Reconocemos que todo lo que tenemos viene de Dios.</span>
+          <span class="lang-col--en">We recognize that everything we have comes from God.</span>
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-card__icon" style="background-color: var(--color-green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v6M11 12V4a1.5 1.5 0 0 1 3 0v8M14 12.5V6a1.5 1.5 0 0 1 3 0v8"/><path d="M17 11a1.5 1.5 0 0 1 3 0v4c0 3.5-2.5 6-6 6h-2c-3 0-4.5-1-6-3l-2.5-4c-.5-.8-.2-1.8.6-2.2.7-.4 1.6-.2 2 .4L8 14"/></svg>
+        </div>
+        <h3 class="value-card__title">
+          <span class="lang-col--es">Compartimos</span><span class="lang-col--en">We Share</span>
+        </h3>
+        <p class="value-card__body">
+          <span class="lang-col--es">Compartimos nuestras vidas y posesiones.</span>
+          <span class="lang-col--en">We share our lives and our possessions.</span>
+        </p>
+        <p class="value-card__desc">
+          <span class="lang-col--es">Reconocemos nuestras limitaciones mientras confiamos en Dios.</span>
+          <span class="lang-col--en">We recognize our limitations while trusting in God.</span>
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-card__icon" style="background-color: var(--color-orange);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19l6-9 4 5 3-4 7 8H2z"/><circle cx="17" cy="7" r="2"/></svg>
+        </div>
+        <h3 class="value-card__title">
+          <span class="lang-col--es">Humilde Confianza</span><span class="lang-col--en">Humble Confidence</span>
+        </h3>
+        <p class="value-card__body">
+          <span class="lang-col--es">Proyectamos humilde confianza.</span>
+          <span class="lang-col--en">We carry ourselves with humble confidence.</span>
+        </p>
+        <p class="value-card__desc">
+          <span class="lang-col--es">Somos una comunidad que camina junto como un solo cuerpo en Cristo.</span>
+          <span class="lang-col--en">We are a community that walks together as one body in Christ.</span>
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-card__icon" style="background-color: var(--color-green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+        </div>
+        <h3 class="value-card__title">
+          <span class="lang-col--es">Somos Familia</span><span class="lang-col--en">We Are Family</span>
+        </h3>
+        <p class="value-card__body">
+          <span class="lang-col--es">Fomentamos un ambiente familiar basado en la Biblia.</span>
+          <span class="lang-col--en">We foster a family environment rooted in the Bible.</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Section 5 of 12: "QUÉ CREEMOS"
+       text + accordion, grid columns: 2 (Section 14). Items 1-2 (La Biblia,
+       Jesucristo) are the actual examples given in the architecture doc's
+       Section 4.2 — items 3-4 are reasonable common belief topics, but
+       PLACEHOLDER guesses, not confirmed content. Per Section 3.3, this is
+       meant as a short summary; the dedicated "Qué Creemos" page expands on it.
+       ===================================================================== -->
+  <section class="content-wrap two-col">
+    <div class="two-col__text">
+      <h2>
+        <span class="lang-col--es">Qué creemos</span>
+        <span class="lang-col--en">What we believe</span>
+      </h2>
+      <p>
+        <span class="lang-col--es">PLACEHOLDER — un párrafo breve que introduce nuestras creencias fundamentales va aquí.</span>
+        <span class="lang-col--en">PLACEHOLDER — a short paragraph introducing our core beliefs goes here.</span>
+      </p>
+      <a href="/que-creemos" class="btn btn--secondary">
+        <span class="lang-col--es">Leer más</span><span class="lang-col--en">Read More</span>
+      </a>
+    </div>
+
+    <div class="accordion">
+
+      <div class="accordion-item" data-open="false">
+        <button type="button" class="accordion-item__header">
+          <svg class="accordion-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span class="accordion-item__label">
+            <span class="lang-col--es">La Biblia</span><span class="lang-col--en">The Bible</span>
+          </span>
+          <svg class="accordion-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-item__body">
+          <p>
+            <span class="lang-col--es">PLACEHOLDER — creemos que la Biblia es la Palabra inspirada de Dios y nuestra autoridad final en fe y conducta.</span>
+            <span class="lang-col--en">PLACEHOLDER — we believe the Bible is the inspired Word of God and our final authority in faith and conduct.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-open="false">
+        <button type="button" class="accordion-item__header">
+          <svg class="accordion-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="8" x2="18" y2="8"/></svg>
+          <span class="accordion-item__label">
+            <span class="lang-col--es">Jesucristo</span><span class="lang-col--en">Jesus Christ</span>
+          </span>
+          <svg class="accordion-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-item__body">
+          <p>
+            <span class="lang-col--es">PLACEHOLDER — creemos que Jesucristo es el Hijo de Dios, quien murió y resucitó para nuestra salvación.</span>
+            <span class="lang-col--en">PLACEHOLDER — we believe Jesus Christ is the Son of God, who died and rose again for our salvation.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-open="false">
+        <button type="button" class="accordion-item__header">
+          <svg class="accordion-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span class="accordion-item__label">
+            <span class="lang-col--es">PLACEHOLDER La Trinidad</span><span class="lang-col--en">PLACEHOLDER The Trinity</span>
+          </span>
+          <svg class="accordion-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-item__body">
+          <p>
+            <span class="lang-col--es">PLACEHOLDER — creemos en un solo Dios eternamente existente en tres personas: Padre, Hijo y Espíritu Santo.</span>
+            <span class="lang-col--en">PLACEHOLDER — we believe in one God eternally existing in three persons: Father, Son, and Holy Spirit.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item" data-open="false">
+        <button type="button" class="accordion-item__header">
+          <svg class="accordion-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0 5.2-8.8 10.4-8.8 10.4S3.2 13.8 3.2 8.6a4.6 4.6 0 0 1 8.8-1.9 4.6 4.6 0 0 1 8.8 1.9z"/></svg>
+          <span class="accordion-item__label">
+            <span class="lang-col--es">PLACEHOLDER La Salvación</span><span class="lang-col--en">PLACEHOLDER Salvation</span>
+          </span>
+          <svg class="accordion-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-item__body">
+          <p>
+            <span class="lang-col--es">PLACEHOLDER — creemos que la salvación es un regalo de gracia de Dios, recibido por fe en Jesucristo.</span>
+            <span class="lang-col--en">PLACEHOLDER — we believe salvation is a gift of God's grace, received through faith in Jesus Christ.</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Section 6 of 12: GOSPEL BANNER
+       media-banner (title, body, quote, single button), full-bleed,
+       no meta row (Section 14). Content is PLACEHOLDER — no real gospel
+       message copy has been provided yet. The quote below is deliberately
+       written as a paraphrase in plain language rather than a direct
+       scripture quotation, since translations like RVR1960 may still be
+       under copyright — swap in whichever verse/translation the church
+       prefers, with proper attribution, once decided.
+       ===================================================================== -->
+  <section class="media-banner bg-image"
+           data-bg-image="https://images.unsplash.com/photo-1491396122992-23bcbe680fe6?q=80&w=2000&auto=format&fit=crop">
+    <div class="media-banner__inner content-wrap">
+      <h2 class="media-banner__title">
+        <span class="lang-col--es">Las Buenas Nuevas</span>
+        <span class="lang-col--en">The Good News</span>
+      </h2>
+      <p class="media-banner__body">
+        <span class="lang-col--es">PLACEHOLDER — un párrafo breve que explica el evangelio y la invitación a conocer a Jesús va aquí.</span>
+        <span class="lang-col--en">PLACEHOLDER — a short paragraph explaining the gospel and the invitation to know Jesus goes here.</span>
+      </p>
+      <blockquote class="media-banner__quote">
+        <span class="lang-col--es">Dios te ama, y Jesús dio su vida por ti.</span>
+        <span class="lang-col--en">God loves you, and Jesus gave His life for you.</span>
+      </blockquote>
+      <div class="media-banner__buttons">
+        <a href="/que-creemos" class="btn btn--primary">
+          <span class="lang-col--es">Conoce más</span><span class="lang-col--en">Learn More</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Section 7 of 12: MINISTRIES
+       heading + container of ministry-card, 3 featured + 4 standard
+       (Section 14). "Kids" is the doc's own Section 4.2 example — real
+       content. Everything else here is a PLACEHOLDER guess at common
+       church ministries, not confirmed.
+       ===================================================================== -->
+  <section class="content-wrap">
+    <h2 class="ministries-heading">
+      <span class="lang-col--es">Ministerios</span>
+      <span class="lang-col--en">Ministries</span>
+    </h2>
+
+    <div class="ministries-featured">
+
+      <a href="/ministerios/ninos" class="ministry-card ministry-card--featured">
+        <div class="ministry-card__media media-box bg-image"
+             data-bg-image="https://images.unsplash.com/flagged/photo-1567116681178-c326fa4e2c8b?q=80&w=900&auto=format&fit=crop"
+             role="img" aria-label="Niños con las manos levantadas en un ambiente de iglesia"></div>
+        <h3 class="ministry-card__title"><span class="lang-col--es">Niños</span><span class="lang-col--en">Kids</span></h3>
+        <p class="ministry-card__body">
+          <span class="lang-col--es">Jugar, aprender y conocer a Jesús.</span>
+          <span class="lang-col--en">Play, learn, and know Jesus.</span>
+        </p>
+        <span class="ministry-card__link"><span class="lang-col--es">Ver más</span><span class="lang-col--en">Learn More</span></span>
+      </a>
+
+      <!-- PLACEHOLDER — Youth ministry name/copy not confirmed -->
+      <a href="/ministerios/jovenes" class="ministry-card ministry-card--featured">
+        <div class="ministry-card__media media-box bg-image"
+             data-bg-image="https://images.unsplash.com/photo-1593896385987-16bcbf9451e5?q=80&w=900&auto=format&fit=crop"
+             role="img" aria-label="Grupo de jóvenes reunidos"></div>
+        <h3 class="ministry-card__title"><span class="lang-col--es">PLACEHOLDER Jóvenes</span><span class="lang-col--en">PLACEHOLDER Youth</span></h3>
+        <p class="ministry-card__body">
+          <span class="lang-col--es">PLACEHOLDER — una breve descripción de este ministerio va aquí.</span>
+          <span class="lang-col--en">PLACEHOLDER — a short description of this ministry goes here.</span>
+        </p>
+        <span class="ministry-card__link"><span class="lang-col--es">Ver más</span><span class="lang-col--en">Learn More</span></span>
+      </a>
+
+      <!-- PLACEHOLDER — Worship ministry name/copy not confirmed -->
+      <a href="/ministerios/alabanza" class="ministry-card ministry-card--featured">
+        <div class="ministry-card__media media-box bg-image"
+             data-bg-image="https://images.unsplash.com/photo-1649365810751-270da3b29bc4?q=80&w=900&auto=format&fit=crop"
+             role="img" aria-label="Congregación adorando con las manos levantadas"></div>
+        <h3 class="ministry-card__title"><span class="lang-col--es">PLACEHOLDER Alabanza</span><span class="lang-col--en">PLACEHOLDER Worship</span></h3>
+        <p class="ministry-card__body">
+          <span class="lang-col--es">PLACEHOLDER — una breve descripción de este ministerio va aquí.</span>
+          <span class="lang-col--en">PLACEHOLDER — a short description of this ministry goes here.</span>
+        </p>
+        <span class="ministry-card__link"><span class="lang-col--es">Ver más</span><span class="lang-col--en">Learn More</span></span>
+      </a>
+
+    </div>
+
+    <!-- PLACEHOLDER — remaining 4 standard ministries are guesses; no photos
+         yet, so these use a plain stone-colored media-box (no bg-image). -->
+    <div class="ministries-standard">
+
+      <a href="/ministerios/hombres" class="ministry-card ministry-card--standard">
+        <div class="ministry-card__media media-box"></div>
+        <h3 class="ministry-card__title"><span class="lang-col--es">PLACEHOLDER Hombres</span><span class="lang-col--en">PLACEHOLDER Men</span></h3>
+        <span class="ministry-card__link"><span class="lang-col--es">Ver más</span><span class="lang-col--en">Learn More</span></span>
+      </a>
+
+      <a href="/ministerios/mujeres" class="ministry-card ministry-card--standard">
+        <div class="ministry-card__media media-box"></div>
+        <h3 class="ministry-card__title"><span class="lang-col--es">PLACEHOLDER Mujeres</span><span class="lang-col--en">PLACEHOLDER Women</span></h3>
+        <span class="ministry-card__link"><span class="lang-col--es">Ver más</span><span class="lang-col--en">Learn More</span></span>
+      </a>
+
+      <a href="/ministerios/oracion" class="ministry-card ministry-card--standard">
+        <div class="ministry-card__media media-box"></div>
+        <h3 class="ministry-card__title"><span class="lang-col--es">PLACEHOLDER Oración</span><span class="lang-col--en">PLACEHOLDER Prayer</span></h3>
+        <span class="ministry-card__link"><span class="lang-col--es">Ver más</span><span class="lang-col--en">Learn More</span></span>
+      </a>
+
+      <a href="/ministerios/misiones" class="ministry-card ministry-card--standard">
+        <div class="ministry-card__media media-box"></div>
+        <h3 class="ministry-card__title"><span class="lang-col--es">PLACEHOLDER Misiones</span><span class="lang-col--en">PLACEHOLDER Missions</span></h3>
+        <span class="ministry-card__link"><span class="lang-col--es">Ver más</span><span class="lang-col--en">Learn More</span></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Section 8 of 12: COMMUNITY BANNER
+       media-banner (heading, short body, single CTA), full-bleed, no meta,
+       no quote (Section 14). PLACEHOLDER copy and photo.
+       ===================================================================== -->
+  <section class="media-banner bg-image"
+           data-bg-image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2000&auto=format&fit=crop">
+    <div class="media-banner__inner content-wrap">
+      <h2 class="media-banner__title">
+        <span class="lang-col--es">Encuentra tu comunidad</span>
+        <span class="lang-col--en">Find Your Community</span>
+      </h2>
+      <p class="media-banner__body">
+        <span class="lang-col--es">PLACEHOLDER — una breve invitación a unirse a un grupo pequeño o comunidad va aquí.</span>
+        <span class="lang-col--en">PLACEHOLDER — a short invitation to join a small group or community goes here.</span>
+      </p>
+      <div class="media-banner__buttons">
+        <a href="/conectate" class="btn btn--primary">
+          <span class="lang-col--es">Conéctate</span><span class="lang-col--en">Get Connected</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Section 9 of 12: EVENTS
+       heading + row of event-card (image + dateBadge), 3 across
+       (Section 14). All 3 events are PLACEHOLDER — no real event data yet,
+       and no real event photos (plain stone media-box for now).
+       ===================================================================== -->
+  <section class="content-wrap">
+    <h2 class="events-heading">
+      <span class="lang-col--es">Próximos Eventos</span>
+      <span class="lang-col--en">Upcoming Events</span>
+    </h2>
+
+    <div class="events-row">
+
+      <div class="event-card">
+        <div class="event-card__media media-box">
+          <div class="event-card__badge">
+            <span class="event-card__badge-day">14</span>
+            <span class="event-card__badge-month">
+              <span class="lang-col--es">SEP</span><span class="lang-col--en">SEP</span>
+            </span>
+          </div>
+        </div>
+        <h3 class="event-card__title">
+          <span class="lang-col--es">PLACEHOLDER Noche de Alabanza</span><span class="lang-col--en">PLACEHOLDER Worship Night</span>
+        </h3>
+        <p class="event-card__location">
+          <span class="lang-col--es">FNL La Molina</span><span class="lang-col--en">FNL La Molina</span>
+        </p>
+        <a href="#" class="event-card__cal-link"><span class="lang-col--es">Agregar al calendario</span><span class="lang-col--en">Add to Calendar</span></a>
+      </div>
+
+      <div class="event-card">
+        <div class="event-card__media media-box">
+          <div class="event-card__badge">
+            <span class="event-card__badge-day">20</span>
+            <span class="event-card__badge-month">
+              <span class="lang-col--es">SEP</span><span class="lang-col--en">SEP</span>
+            </span>
+          </div>
+        </div>
+        <h3 class="event-card__title">
+          <span class="lang-col--es">PLACEHOLDER Grupo de Jóvenes</span><span class="lang-col--en">PLACEHOLDER Youth Group</span>
+        </h3>
+        <p class="event-card__location">
+          <span class="lang-col--es">FNL La Molina</span><span class="lang-col--en">FNL La Molina</span>
+        </p>
+        <a href="#" class="event-card__cal-link"><span class="lang-col--es">Agregar al calendario</span><span class="lang-col--en">Add to Calendar</span></a>
+      </div>
+
+      <div class="event-card">
+        <div class="event-card__media media-box">
+          <div class="event-card__badge">
+            <span class="event-card__badge-day">27</span>
+            <span class="event-card__badge-month">
+              <span class="lang-col--es">SEP</span><span class="lang-col--en">SEP</span>
+            </span>
+          </div>
+        </div>
+        <h3 class="event-card__title">
+          <span class="lang-col--es">PLACEHOLDER Café con Pastores</span><span class="lang-col--en">PLACEHOLDER Coffee with the Pastors</span>
+        </h3>
+        <p class="event-card__location">
+          <span class="lang-col--es">FNL La Molina</span><span class="lang-col--en">FNL La Molina</span>
+        </p>
+        <a href="#" class="event-card__cal-link"><span class="lang-col--es">Agregar al calendario</span><span class="lang-col--en">Add to Calendar</span></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 10 of 12, sermons, goes here next -->
+
 </main>
- 
+
 <!-- =========================== FOOTER =========================== -->
 <footer class="site-footer">
   <div class="content-wrap">
     <div class="site-footer__grid">
- 
+
       <div class="site-footer__brand">
         <a href="/" class="logo">
           <span>LA FAMILIA</span>
@@ -179,7 +659,7 @@
           </a>
         </div>
       </div>
- 
+
       <div class="site-footer__col">
         <h4><span class="lang-col--es">Explorar</span><span class="lang-col--en">Explore</span></h4>
         <ul>
@@ -189,7 +669,7 @@
           <li><a href="/mensajes"><span class="lang-col--es">Mensajes</span><span class="lang-col--en">Messages</span></a></li>
         </ul>
       </div>
- 
+
       <div class="site-footer__col">
         <h4><span class="lang-col--es">Participa</span><span class="lang-col--en">Get Involved</span></h4>
         <ul>
@@ -199,7 +679,7 @@
           <li><a href="/conectate#oracion"><span class="lang-col--es">Peticiones de Oración</span><span class="lang-col--en">Prayer Requests</span></a></li>
         </ul>
       </div>
- 
+
       <div class="site-footer__col">
         <h4><span class="lang-col--es">Contacto</span><span class="lang-col--en">Contact</span></h4>
         <ul>
@@ -212,9 +692,9 @@
           <li><a href="/staff"><span class="lang-col--es">Nuestro Equipo</span><span class="lang-col--en">Staff</span></a></li>
         </ul>
       </div>
- 
+
     </div>
- 
+
     <div class="site-footer__bottom">
       <div class="lang-toggle" role="group" aria-label="Language / Idioma" data-lang-toggle>
         <button type="button" class="lang-toggle__btn" data-lang-set="es" aria-pressed="true">ES</button>
@@ -228,123 +708,14 @@
     </div>
   </div>
 </footer>
- 
+
 <!--
-  MOBILE MENU + LANGUAGE TOGGLE + MEDIA BANNER BACKGROUNDS — identical on
-  every page (Section 5.5). Copy this verbatim along with the
-  flash-prevention script above. The media-banner piece builds whichever
-  background layer (image / slideshow / video) a given .media-banner asks
-  for via its modifier class + data-* attribute — see Section 4.2.
+  SHARED SITE SCRIPT — linked, not inline. Handles the mobile menu,
+  language toggle, and media-banner backgrounds. See script.js.
+  Only the flash-prevention snippet above (in <head>) still needs to be
+  copy-pasted per page — it has to run before this file even loads.
 -->
-<script>
-  (function () {
-    // --- Mobile menu toggle ---
-    var menuBtn = document.getElementById('menu-toggle');
-    var nav = document.getElementById('site-nav');
-    if (menuBtn && nav) {
-      menuBtn.addEventListener('click', function () {
-        var isOpen = nav.getAttribute('data-open') === 'true';
-        nav.setAttribute('data-open', String(!isOpen));
-        menuBtn.setAttribute('aria-expanded', String(!isOpen));
-      });
-    }
- 
-    // --- Language toggle (two-state, synced across nav + footer instances) ---
-    var STORAGE_KEY = 'fnl-lang-mode';
- 
-    function setLangMode(mode) {
-      document.documentElement.setAttribute('data-lang-mode', mode);
-      try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
-      document.querySelectorAll('[data-lang-toggle] .lang-toggle__btn').forEach(function (btn) {
-        btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang-set') === mode));
-      });
-    }
- 
-    document.querySelectorAll('[data-lang-toggle] .lang-toggle__btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        setLangMode(btn.getAttribute('data-lang-set'));
-      });
-    });
- 
-    // Sync toggle button states to whatever the flash-prevention script already set
-    var current = document.documentElement.getAttribute('data-lang-mode') || 'es';
-    setLangMode(current);
- 
-    // --- Media banner backgrounds (image / slideshow / video) ---
-    // Mode is read from a modifier class; source(s) come from a matching
-    // data-* attribute. Switching a banner's mode = change the class + the
-    // data-* value. Nothing here needs editing when a page's banners change.
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
-    document.querySelectorAll('.media-banner').forEach(function (banner) {
-      var bg = document.createElement('div');
-      bg.className = 'media-banner__bg';
-      bg.setAttribute('aria-hidden', 'true');
- 
-      if (banner.classList.contains('media-banner--bg-slideshow')) {
-        var urls = (banner.getAttribute('data-bg-slides') || '')
-          .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
- 
-        urls.forEach(function (url, i) {
-          var slide = document.createElement('div');
-          slide.className = 'media-banner__bg-slide' + (i === 0 ? ' media-banner__bg-slide--active' : '');
-          slide.style.backgroundImage = "url('" + url + "')";
-          bg.appendChild(slide);
-        });
- 
-        if (urls.length > 1 && !reduceMotion) {
-          var slides = Array.prototype.slice.call(bg.children);
-          var idx = 0;
-          setInterval(function () {
-            slides[idx].classList.remove('media-banner__bg-slide--active');
-            idx = (idx + 1) % slides.length;
-            slides[idx].classList.add('media-banner__bg-slide--active');
-          }, 6000);
-        }
- 
-      } else if (banner.classList.contains('media-banner--bg-video')) {
-        var videoUrl = banner.getAttribute('data-bg-video');
-        var poster = banner.getAttribute('data-bg-poster');
-        if (videoUrl) {
-          var video = document.createElement('video');
-          video.className = 'media-banner__bg-video';
-          video.muted = true;
-          video.loop = true;
-          video.setAttribute('playsinline', '');
-          if (poster) video.poster = poster;
-          var source = document.createElement('source');
-          source.src = videoUrl;
-          source.type = 'video/mp4';
-          video.appendChild(source);
-          bg.appendChild(video);
-          if (!reduceMotion) {
-            video.autoplay = true;
-            video.play().catch(function () {}); // autoplay can be blocked by the browser; fail silently
-          }
-          // If reduced motion is preferred, the video stays paused on its poster/first frame.
-        }
- 
-      } else if (banner.classList.contains('media-banner--bg-image')) {
-        var imgUrl = banner.getAttribute('data-bg-image');
-        if (imgUrl) {
-          var layer = document.createElement('div');
-          layer.className = 'media-banner__bg-image';
-          layer.style.backgroundImage = "url('" + imgUrl + "')";
-          bg.appendChild(layer);
-        }
-      }
- 
-      if (bg.children.length) {
-        banner.insertBefore(bg, banner.firstChild);
-        var overlay = document.createElement('div');
-        overlay.className = 'media-banner__overlay';
-        overlay.setAttribute('aria-hidden', 'true');
-        banner.insertBefore(overlay, bg.nextSibling);
-      }
-    });
-  })();
-</script>
- 
+<script src="script.js"></script>
+
 </body>
 </html>
- 
