@@ -3,7 +3,7 @@
    Linked from every page via <script src="script.js"></script> near the end
    of <body>. This is the ONE file to edit for menu/lang-toggle/media-banner
    behavior — no more copy-pasting this logic per page.
- 
+
    NOTE: the tiny flash-prevention snippet (sets data-lang-mode on <html>
    before paint, per Section 5.4) is NOT in here — it has to run inline,
    synchronously, at the very top of each page's <head>, before this file
@@ -11,17 +11,17 @@
    per page; everything else lives here now.
    ========================================================================= */
 (function () {
- 
+
   // -------------------------------------------------------------------
   // Site-wide config — single source of truth for values reused across
   // the site. Edit here once; applied everywhere via data-* attributes.
   // -------------------------------------------------------------------
   var CHURCH_MAPS_URL = "https://www.google.com/maps/place/La+Molina+Christian+Schools/@-12.0865607,-76.9053944,17z/data=!3m1!4b1!4m6!3m5!1s0x9105c0da13cbefa1:0x8f2c78e5ae9227d!8m2!3d-12.0865607!4d-76.9053944!16s%2Fg%2F11c3thztg_?entry=ttu&g_ep=EgoyMDI2MDkwOC4wIKXMDSoASAFQAw%3D%3D"; // real link from your edit — confirm this pin is right; it currently resolves to "La Molina Christian Schools," not obviously the church itself
- 
+
   document.querySelectorAll('[data-directions-link]').forEach(function (el) {
     el.href = CHURCH_MAPS_URL;
   });
- 
+
   // -------------------------------------------------------------------
   // Mobile menu toggle
   // -------------------------------------------------------------------
@@ -34,12 +34,12 @@
       menuBtn.setAttribute('aria-expanded', String(!isOpen));
     });
   }
- 
+
   // -------------------------------------------------------------------
   // Language toggle (two-state: es / en, synced across nav + footer)
   // -------------------------------------------------------------------
   var STORAGE_KEY = 'fnl-lang-mode';
- 
+
   function setLangMode(mode) {
     document.documentElement.setAttribute('data-lang-mode', mode);
     try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
@@ -47,43 +47,47 @@
       btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang-set') === mode));
     });
   }
- 
+
   document.querySelectorAll('[data-lang-toggle] .lang-toggle__btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       setLangMode(btn.getAttribute('data-lang-set'));
     });
   });
- 
+
   // Sync toggle button states to whatever the inline flash-prevention
   // script already set on <html> before this file loaded.
   var currentLangMode = document.documentElement.getAttribute('data-lang-mode') || 'es';
   setLangMode(currentLangMode);
- 
+
   // -------------------------------------------------------------------
-  // Media banner backgrounds (image / slideshow / video)
-  // Mode is read from a modifier class; source(s) come from a matching
-  // data-* attribute. Switching a banner's mode = change the class + the
-  // data-* value on that <section> in the HTML. Nothing in this file
-  // needs editing when a page's banners change. See Section 4.2.
+  // Backgrounds: image / slideshow / video
+  // Works on TWO base component types:
+  //   .media-banner  → full-bleed, includes the dark legibility overlay
+  //   .media-box     → contained box (e.g. the photo slot in a two-col
+  //                    text+image section) — no overlay, it's just content
+  // Mode is read from a generic modifier class (bg-image / bg-slideshow /
+  // bg-video) — NOT tied to which base type it's on — plus a matching
+  // data-* attribute. Add this capability to a new component type later
+  // just by adding it to the querySelectorAll list below.
   // -------------------------------------------------------------------
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
-  document.querySelectorAll('.media-banner').forEach(function (banner) {
+
+  document.querySelectorAll('.media-banner, .media-box').forEach(function (banner) {
     var bg = document.createElement('div');
     bg.className = 'media-banner__bg';
     bg.setAttribute('aria-hidden', 'true');
- 
-    if (banner.classList.contains('media-banner--bg-slideshow')) {
+
+    if (banner.classList.contains('bg-slideshow')) {
       var urls = (banner.getAttribute('data-bg-slides') || '')
         .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
- 
+
       urls.forEach(function (url, i) {
         var slide = document.createElement('div');
         slide.className = 'media-banner__bg-slide' + (i === 0 ? ' media-banner__bg-slide--active' : '');
         slide.style.backgroundImage = "url('" + url + "')";
         bg.appendChild(slide);
       });
- 
+
       if (urls.length > 1 && !reduceMotion) {
         var slides = Array.prototype.slice.call(bg.children);
         var idx = 0;
@@ -93,8 +97,8 @@
           slides[idx].classList.add('media-banner__bg-slide--active');
         }, 6000);
       }
- 
-    } else if (banner.classList.contains('media-banner--bg-video')) {
+
+    } else if (banner.classList.contains('bg-video')) {
       var videoUrl = banner.getAttribute('data-bg-video');
       var poster = banner.getAttribute('data-bg-poster');
       if (videoUrl) {
@@ -115,8 +119,8 @@
         }
         // If reduced motion is preferred, the video stays paused on its poster/first frame.
       }
- 
-    } else if (banner.classList.contains('media-banner--bg-image')) {
+
+    } else if (banner.classList.contains('bg-image')) {
       var imgUrl = banner.getAttribute('data-bg-image');
       if (imgUrl) {
         var layer = document.createElement('div');
@@ -125,14 +129,35 @@
         bg.appendChild(layer);
       }
     }
- 
+
     if (bg.children.length) {
       banner.insertBefore(bg, banner.firstChild);
-      var overlay = document.createElement('div');
-      overlay.className = 'media-banner__overlay';
-      overlay.setAttribute('aria-hidden', 'true');
-      banner.insertBefore(overlay, bg.nextSibling);
+      // Legibility overlay only applies to full-bleed banners with text on
+      // top of them. A .media-box is just a content image/video sitting
+      // next to text (e.g. the two-col sections) — no overlay needed.
+      if (banner.classList.contains('media-banner')) {
+        var overlay = document.createElement('div');
+        overlay.className = 'media-banner__overlay';
+        overlay.setAttribute('aria-hidden', 'true');
+        banner.insertBefore(overlay, bg.nextSibling);
+      }
     }
   });
- 
+
+  // -------------------------------------------------------------------
+  // Accordion (Section 4.2 / "Qué creemos"). Height is measured via
+  // scrollHeight rather than a fixed max-height so it works regardless of
+  // how long any given item's text ends up being. Multiple items can be
+  // open at once — there's no accordion-wide "only one open" constraint.
+  // -------------------------------------------------------------------
+  document.querySelectorAll('.accordion-item__header').forEach(function (header) {
+    header.addEventListener('click', function () {
+      var item = header.closest('.accordion-item');
+      var body = item.querySelector('.accordion-item__body');
+      var isOpen = item.getAttribute('data-open') === 'true';
+      item.setAttribute('data-open', String(!isOpen));
+      body.style.maxHeight = !isOpen ? body.scrollHeight + 'px' : null;
+    });
+  });
+
 })();
