@@ -87,21 +87,24 @@
 <main>
  
   <section class="media-banner media-banner--hero media-banner--bg-video"
-         data-bg-video="media/hero/hero-video.mp4"
-         data-bg-poster="media/hero/hero-poster.jpeg">
-    <!-- To switch this banner 
-        to a single photo: 
-        <section class="media-banner media-banner--hero media-banner--bg-image"
-         data-bg-image="media/hero/hero-1.jpeg">
-
-         To switch to slideshow:
+           data-bg-video="media/hero/hero-video.mp4"
+           data-bg-poster="media/hero/hero-poster.jpeg">
+    <!-- BACKGROUND MODE — currently VIDEO. To switch, replace the class +
+         data-* attributes on the <section> above with one of these three
+         (nothing else needs to change, no markup to add/remove):
+ 
+         Single photo:
+         <section class="media-banner media-banner--hero media-banner--bg-image"
+                  data-bg-image="media/hero/hero-1.jpeg">
+ 
+         Slideshow (multiple photos):
          <section class="media-banner media-banner--hero media-banner--bg-slideshow"
-         data-bg-slides="media/hero/hero-1.jpeg,media/hero/hero-2.jpeg,media/hero/hero-3.jpeg,media/hero/hero-4.jpeg,media/hero/hero-5.jpeg">
-
-         To switch to video :
+                  data-bg-slides="media/hero/hero-1.jpeg,media/hero/hero-2.jpeg,media/hero/hero-3.jpeg,media/hero/hero-4.jpeg,media/hero/hero-5.jpeg">
+ 
+         Video:
          <section class="media-banner media-banner--hero media-banner--bg-video"
-         data-bg-video="media/hero/hero-video.mp4"
-         data-bg-poster="media/hero/hero-poster.jpeg">
+                  data-bg-video="media/hero/hero-video.mp4"
+                  data-bg-poster="media/hero/hero-poster.jpeg">
     -->
     <div class="media-banner__inner content-wrap">
  
@@ -139,7 +142,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span class="lang-col--es">La Molina, Lima Perú</span><span class="lang-col--en">La Molina, Lima Peru</span>
         </span>
-        <a href="https://www.google.com/maps/place/La+Molina+Christian+Schools/@-12.0865607,-76.9053944,17z/data=!3m1!4b1!4m6!3m5!1s0x9105c0da13cbefa1:0x8f2c78e5ae9227d!8m2!3d-12.0865607!4d-76.9053944!16s%2Fg%2F11c3thztg_?entry=ttu&g_ep=EgoyMDI2MDkwOC4wIKXMDSoASAFQAw%3D%3D" class="media-banner__meta-item media-banner__meta-item--link" target="_blank" rel="noopener">
+        <a href="#" data-directions-link class="media-banner__meta-item media-banner__meta-item--link" target="_blank" rel="noopener">
           <span class="lang-col--es">Cómo llegar</span><span class="lang-col--en">Get Directions</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -148,7 +151,34 @@
     </div>
   </section>
  
-  <!-- Section 2 of 12, "Somos familia" welcome, goes here next -->
+  <!-- =====================================================================
+       Section 2 of 12: "SOMOS FAMILIA" (welcome)
+       text + image, grid columns: 2 (Section 14)
+       ===================================================================== -->
+  <section class="content-wrap two-col">
+    <div class="two-col__text">
+      <h2>
+        <span class="lang-col--es">Somos familia</span>
+        <span class="lang-col--en">We are family</span>
+      </h2>
+      <p>
+        <span class="lang-col--es">PLACEHOLDER — un párrafo de bienvenida más extenso que explica quiénes somos como iglesia y qué se puede esperar al visitarnos por primera vez.</span>
+        <span class="lang-col--en">PLACEHOLDER — a longer welcome paragraph explaining who we are as a church and what to expect when visiting for the first time.</span>
+      </p>
+    </div>
+    <div class="two-col__media">
+      <!-- PLACEHOLDER photo — Helena Lopes, free to use under the Unsplash License.
+           NOTE: alt text is a plain attribute, so it can't use lang-col spans
+           like visible text does — it's set once, in Spanish, matching the
+           page's default lang. Revisit if EN-mode screen-reader users become
+           a priority (would need a small JS hook to swap alt text alongside
+           data-lang-mode). -->
+      <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop"
+           alt="Un grupo de amigos con los brazos entrelazados, sonriendo juntos">
+    </div>
+  </section>
+ 
+  <!-- Section 3 of 12, mission strip, goes here next -->
  
 </main>
  
@@ -230,121 +260,12 @@
 </footer>
  
 <!--
-  MOBILE MENU + LANGUAGE TOGGLE + MEDIA BANNER BACKGROUNDS — identical on
-  every page (Section 5.5). Copy this verbatim along with the
-  flash-prevention script above. The media-banner piece builds whichever
-  background layer (image / slideshow / video) a given .media-banner asks
-  for via its modifier class + data-* attribute — see Section 4.2.
+  SHARED SITE SCRIPT — linked, not inline. Handles the mobile menu,
+  language toggle, and media-banner backgrounds. See script.js.
+  Only the flash-prevention snippet above (in <head>) still needs to be
+  copy-pasted per page — it has to run before this file even loads.
 -->
-<script>
-  (function () {
-    // --- Mobile menu toggle ---
-    var menuBtn = document.getElementById('menu-toggle');
-    var nav = document.getElementById('site-nav');
-    if (menuBtn && nav) {
-      menuBtn.addEventListener('click', function () {
-        var isOpen = nav.getAttribute('data-open') === 'true';
-        nav.setAttribute('data-open', String(!isOpen));
-        menuBtn.setAttribute('aria-expanded', String(!isOpen));
-      });
-    }
- 
-    // --- Language toggle (two-state, synced across nav + footer instances) ---
-    var STORAGE_KEY = 'fnl-lang-mode';
- 
-    function setLangMode(mode) {
-      document.documentElement.setAttribute('data-lang-mode', mode);
-      try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
-      document.querySelectorAll('[data-lang-toggle] .lang-toggle__btn').forEach(function (btn) {
-        btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang-set') === mode));
-      });
-    }
- 
-    document.querySelectorAll('[data-lang-toggle] .lang-toggle__btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        setLangMode(btn.getAttribute('data-lang-set'));
-      });
-    });
- 
-    // Sync toggle button states to whatever the flash-prevention script already set
-    var current = document.documentElement.getAttribute('data-lang-mode') || 'es';
-    setLangMode(current);
- 
-    // --- Media banner backgrounds (image / slideshow / video) ---
-    // Mode is read from a modifier class; source(s) come from a matching
-    // data-* attribute. Switching a banner's mode = change the class + the
-    // data-* value. Nothing here needs editing when a page's banners change.
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
-    document.querySelectorAll('.media-banner').forEach(function (banner) {
-      var bg = document.createElement('div');
-      bg.className = 'media-banner__bg';
-      bg.setAttribute('aria-hidden', 'true');
- 
-      if (banner.classList.contains('media-banner--bg-slideshow')) {
-        var urls = (banner.getAttribute('data-bg-slides') || '')
-          .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
- 
-        urls.forEach(function (url, i) {
-          var slide = document.createElement('div');
-          slide.className = 'media-banner__bg-slide' + (i === 0 ? ' media-banner__bg-slide--active' : '');
-          slide.style.backgroundImage = "url('" + url + "')";
-          bg.appendChild(slide);
-        });
- 
-        if (urls.length > 1 && !reduceMotion) {
-          var slides = Array.prototype.slice.call(bg.children);
-          var idx = 0;
-          setInterval(function () {
-            slides[idx].classList.remove('media-banner__bg-slide--active');
-            idx = (idx + 1) % slides.length;
-            slides[idx].classList.add('media-banner__bg-slide--active');
-          }, 6000);
-        }
- 
-      } else if (banner.classList.contains('media-banner--bg-video')) {
-        var videoUrl = banner.getAttribute('data-bg-video');
-        var poster = banner.getAttribute('data-bg-poster');
-        if (videoUrl) {
-          var video = document.createElement('video');
-          video.className = 'media-banner__bg-video';
-          video.muted = true;
-          video.loop = true;
-          video.setAttribute('playsinline', '');
-          if (poster) video.poster = poster;
-          var source = document.createElement('source');
-          source.src = videoUrl;
-          source.type = 'video/mp4';
-          video.appendChild(source);
-          bg.appendChild(video);
-          if (!reduceMotion) {
-            video.autoplay = true;
-            video.play().catch(function () {}); // autoplay can be blocked by the browser; fail silently
-          }
-          // If reduced motion is preferred, the video stays paused on its poster/first frame.
-        }
- 
-      } else if (banner.classList.contains('media-banner--bg-image')) {
-        var imgUrl = banner.getAttribute('data-bg-image');
-        if (imgUrl) {
-          var layer = document.createElement('div');
-          layer.className = 'media-banner__bg-image';
-          layer.style.backgroundImage = "url('" + imgUrl + "')";
-          bg.appendChild(layer);
-        }
-      }
- 
-      if (bg.children.length) {
-        banner.insertBefore(bg, banner.firstChild);
-        var overlay = document.createElement('div');
-        overlay.className = 'media-banner__overlay';
-        overlay.setAttribute('aria-hidden', 'true');
-        banner.insertBefore(overlay, bg.nextSibling);
-      }
-    });
-  })();
-</script>
+<script src="script.js"></script>
  
 </body>
 </html>
- 

@@ -448,6 +448,35 @@ html[data-lang-mode="en"] .lang-col--es { display: none !important; }
   .media-banner__title { font-size: 3.4rem; }
 }
  
-
-
-
+/* =========================================================================
+   TWO-COLUMN TEXT + IMAGE SECTION (Section 14, #2 "Somos familia" / #3 mission)
+   Grid mode per Section 4.4: fixed 2-column layout, stacks to 1 column on
+   mobile. --reverse flips which side the image sits on (desktop only —
+   text always reads first on mobile regardless of variant).
+   ========================================================================= */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 56px 0;
+}
+.two-col__text h2 { font-size: 1.6rem; }
+.two-col__text p { opacity: 0.85; }
+.two-col__media img {
+  width: 100%;
+  border-radius: 6px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+ 
+@media (min-width: 700px) {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 88px 0;
+  }
+  .two-col--reverse .two-col__media { order: -1; }
+  .two-col__text h2 { font-size: 2rem; }
+}
+ 
